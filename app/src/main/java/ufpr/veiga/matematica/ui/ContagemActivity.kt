@@ -5,6 +5,7 @@ import android.util.TypedValue
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import ufpr.veiga.matematica.R
 import ufpr.veiga.matematica.controller.ContagemController
 import ufpr.veiga.matematica.databinding.ActivityContagemBinding
 import ufpr.veiga.matematica.model.RodadaContagem
@@ -79,7 +80,7 @@ class ContagemActivity : AppCompatActivity() {
     }
 
     private fun atualizarProgresso() {
-        binding.tvProgresso.text = "Rodada ${controller.getRodadaAtual()}/${controller.getTotalRodadas()}"
+        binding.tvProgresso.text = getString(R.string.contagem_progresso, controller.getRodadaAtual(), controller.getTotalRodadas())
     }
 
     private fun dpParaPx(dp: Int): Int {
@@ -104,14 +105,14 @@ class ContagemActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
 
         if (correto) {
-            builder.setTitle("Correto!")
-            builder.setMessage("Parabéns! Você acertou!")
+            builder.setTitle(getString(R.string.feedback_correto_titulo))
+            builder.setMessage(getString(R.string.feedback_correto_mensagem))
         } else {
-            builder.setTitle("Errou!")
-            builder.setMessage("A resposta correta era ${controller.getRespostaCorreta()}")
+            builder.setTitle(getString(R.string.feedback_errou_titulo))
+            builder.setMessage(getString(R.string.feedback_errou_mensagem, controller.getRespostaCorreta()))
         }
 
-        builder.setPositiveButton("Próxima") { dialog, _ ->
+        builder.setPositiveButton(getString(R.string.feedback_btn_proxima)) { dialog, _ ->
             dialog.dismiss()
             carregarRodada()
         }
@@ -124,22 +125,22 @@ class ContagemActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
 
         val mensagemFeedback = if (ultimaRespostaCorreta) {
-            "Correto!\n\n"
+            getString(R.string.resultado_correto_final)
         } else {
-            "Errou! A resposta era ${controller.getRespostaCorreta()}\n\n"
+            getString(R.string.resultado_errou_final, controller.getRespostaCorreta())
         }
 
         val nota = controller.calcularNota()
         val acertos = controller.getAcertos()
         val total = controller.getTotalRodadas()
 
-        builder.setTitle("Jogo Finalizado!")
+        builder.setTitle(getString(R.string.resultado_titulo))
         builder.setMessage(
-            "${mensagemFeedback}Sua nota: $nota/100\n" +
-            "Você acertou $acertos de $total rodadas"
+            "$mensagemFeedback${getString(R.string.resultado_nota, nota)}\n" +
+            getString(R.string.resultado_acertos_rodadas, acertos, total)
         )
 
-        builder.setPositiveButton("Fechar") { dialog, _ ->
+        builder.setPositiveButton(getString(R.string.resultado_btn_fechar)) { dialog, _ ->
             dialog.dismiss()
             finish()
         }

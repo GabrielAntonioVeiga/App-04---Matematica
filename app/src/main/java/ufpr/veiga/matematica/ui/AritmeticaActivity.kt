@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import ufpr.veiga.matematica.R
 import ufpr.veiga.matematica.controller.AritmeticaController
 import ufpr.veiga.matematica.databinding.ActivityAritmeticaBinding
 import ufpr.veiga.matematica.model.Questao
@@ -44,14 +45,14 @@ class AritmeticaActivity : AppCompatActivity() {
     }
 
     private fun atualizarProgresso() {
-        binding.tvProgresso.text = "Questão ${controller.getQuestaoAtual()}/${controller.getTotalQuestoes()}"
+        binding.tvProgresso.text = getString(R.string.aritmetica_progresso, controller.getQuestaoAtual(), controller.getTotalQuestoes())
     }
 
     private fun validarResposta() {
         val respostaTexto = binding.etResposta.text.toString()
 
         if (respostaTexto.isEmpty()) {
-            Toast.makeText(this, "Digite uma resposta", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.validacao_digite_resposta), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -69,14 +70,14 @@ class AritmeticaActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
 
         if (correto) {
-            builder.setTitle("Correto!")
-            builder.setMessage("Parabéns! Você acertou!")
+            builder.setTitle(getString(R.string.feedback_correto_titulo))
+            builder.setMessage(getString(R.string.feedback_correto_mensagem))
         } else {
-            builder.setTitle("Errou!")
-            builder.setMessage("A resposta correta era ${controller.getResultadoCorreto()}")
+            builder.setTitle(getString(R.string.feedback_errou_titulo))
+            builder.setMessage(getString(R.string.feedback_errou_mensagem, controller.getResultadoCorreto()))
         }
 
-        builder.setPositiveButton("Próxima") { dialog, _ ->
+        builder.setPositiveButton(getString(R.string.feedback_btn_proxima)) { dialog, _ ->
             dialog.dismiss()
             carregarQuestao()
         }
@@ -89,22 +90,22 @@ class AritmeticaActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
 
         val mensagemFeedback = if (ultimaRespostaCorreta) {
-            "Correto!\n\n"
+            getString(R.string.resultado_correto_final)
         } else {
-            "Errou! A resposta era ${controller.getResultadoCorreto()}\n\n"
+            getString(R.string.resultado_errou_final, controller.getResultadoCorreto())
         }
 
         val nota = controller.calcularNota()
         val acertos = controller.getAcertos()
         val total = controller.getTotalQuestoes()
 
-        builder.setTitle("Jogo Finalizado!")
+        builder.setTitle(getString(R.string.resultado_titulo))
         builder.setMessage(
-            "${mensagemFeedback}Sua nota: $nota/100\n" +
-            "Você acertou $acertos de $total questões"
+            "$mensagemFeedback${getString(R.string.resultado_nota, nota)}\n" +
+            getString(R.string.resultado_acertos_questoes, acertos, total)
         )
 
-        builder.setPositiveButton("Fechar") { dialog, _ ->
+        builder.setPositiveButton(getString(R.string.resultado_btn_fechar)) { dialog, _ ->
             dialog.dismiss()
             finish()
         }

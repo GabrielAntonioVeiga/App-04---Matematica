@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">App-04---Matematica</string>
+    <string name="app_name">Escola Divertida</string>
+
+    <!-- Menu -->
+    <string name="menu_titulo">Escola Divertida</string>
+    <string name="menu_subtitulo">Aprendendo Matemática</string>
+    <string name="btn_jogo_contagem">Jogo Contagem</string>
+    <string name="btn_aritmetica">Aritmética</string>
+    <string name="btn_maior_numero">Maior Número</string>
+
+    <!-- Aritmética -->
+    <string name="aritmetica_titulo">Aritmética</string>
+    <string name="aritmetica_progresso">Questão %1$d/%2$d</string>
+    <string name="aritmetica_hint_resposta">Sua resposta</string>
+    <string name="aritmetica_btn_responder">Responder</string>
+
+    <!-- Maior Número -->
+    <string name="maior_numero_titulo">Maior Número</string>
+    <string name="maior_numero_progresso">Rodada %1$d/%2$d</string>
+    <string name="maior_numero_instrucao">Digite o maior número formado por estes dígitos</string>
+    <string name="maior_numero_hint_resposta">Sua resposta</string>
+    <string name="maior_numero_btn_confirmar">Confirmar</string>
+
+    <!-- Contagem -->
+    <string name="contagem_titulo">Jogo Contagem</string>
+    <string name="contagem_progresso">Rodada %1$d/%2$d</string>
+    <string name="contagem_instrucao">Quantos itens você vê?</string>
+
+    <!-- Mensagens de Feedback -->
+    <string name="feedback_correto_titulo">Correto!</string>
+    <string name="feedback_correto_mensagem">Parabéns! Você acertou!</string>
+    <string name="feedback_errou_titulo">Errou!</string>
+    <string name="feedback_errou_mensagem">A resposta correta era %1$d</string>
+    <string name="feedback_btn_proxima">Próxima</string>
+
+    <!-- Resultado Final -->
+    <string name="resultado_titulo">Jogo Finalizado!</string>
+    <string name="resultado_correto_final">Correto!\n\n</string>
+    <string name="resultado_errou_final">Errou! A resposta era %1$d\n\n</string>
+    <string name="resultado_nota">Sua nota: %1$d/100</string>
+    <string name="resultado_acertos_questoes">Você acertou %1$d de %2$d questões</string>
+    <string name="resultado_acertos_rodadas">Você acertou %1$d de %2$d rodadas</string>
+    <string name="resultado_btn_fechar">Fechar</string>
+
+    <!-- Validações -->
+    <string name="validacao_digite_resposta">Digite uma resposta</string>
+    <string name="validacao_digite_3_digitos">Digite um número de 3 dígitos</string>
 </resources>
