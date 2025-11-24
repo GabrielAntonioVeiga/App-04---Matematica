@@ -4,11 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.app_04___matematica"
+
+    namespace = "ufpr.veiga.matematica"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.app_04___matematica"
+        applicationId = "ufpr.veiga.matematica"
         minSdk = 28
         targetSdk = 36
         versionCode = 1
@@ -32,6 +33,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App04Matematica">
         <activity
-            android:name=".MainActivity"
+            android:name="ufpr.veiga.matematica.ui.MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="ufpr.veiga.matematica.ui.ContagemActivity"
+            android:exported="false" />
+        <activity
+            android:name="ufpr.veiga.matematica.ui.AritmeticaActivity"
+            android:exported="false" />
+        <activity
+            android:name="ufpr.veiga.matematica.ui.MaiorNumeroActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
