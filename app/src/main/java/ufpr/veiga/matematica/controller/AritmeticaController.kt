@@ -19,7 +19,6 @@ class AritmeticaController {
 
         for (n1 in min..max) {
             for (n2 in min..max) {
-                // SOMA
                 val resultadoSoma = n1 + n2
 
                 if (n1 <= n2) {
