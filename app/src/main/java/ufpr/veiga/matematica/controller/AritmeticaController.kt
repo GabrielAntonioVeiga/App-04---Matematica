@@ -17,20 +17,15 @@ class AritmeticaController {
         val min = AppConstants.NUMERO_MINIMO // 0
         val max = AppConstants.NUMERO_MAXIMO // 9
 
-        // Loop para todas as combinações de números 0-9
         for (n1 in min..max) {
             for (n2 in min..max) {
                 // SOMA
                 val resultadoSoma = n1 + n2
 
-                // Previne a repetição de somas (ex: 2+5 e 5+2).
-                // Apenas registra a forma onde o primeiro número é menor ou igual ao segundo.
                 if (n1 <= n2) {
                     todasQuestoes.add(Questao(n1, n2, Operador.SOMA, resultadoSoma))
                 }
 
-                // SUBTRAÇÃO
-                // Garante que a subtração não seja negativa (e previne repetição de 5-5 vs 5-5)
                 if (n1 >= n2) {
                     val resultadoSubtracao = n1 - n2
                     todasQuestoes.add(Questao(n1, n2, Operador.SUBTRACAO, resultadoSubtracao))
