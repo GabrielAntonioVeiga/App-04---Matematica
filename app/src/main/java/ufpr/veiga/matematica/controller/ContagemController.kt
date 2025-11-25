@@ -10,19 +10,37 @@ class ContagemController {
     private val imagensDisponiveis = listOf(
         R.drawable.masha_e_o_urso,
         R.drawable.pele_xuxa,
-        R.drawable.peppa_pig_aquatica
+        R.drawable.peppa_pig_aquatica,
+        R.drawable.coxa,
+        R.drawable.nokia,
+        R.drawable.baruch_spinoza,
+        R.drawable.flamengo,
+        R.drawable.pista_tubarao,
+        R.drawable.sigma,
+        R.drawable.virginia_e_vini_junior
     )
 
     private var rodadaAtual: RodadaContagem? = null
     private var numeroRodadaAtual = 0
     private var acertos = 0
 
+    private var paresPerguntas: List<Pair<Int, Int>> = emptyList()
+
+
+    fun iniciarJogo() {
+        val imagensSorteadasUnicas = imagensDisponiveis.shuffled().take(5)
+        val quantidadesSorteadasUnicas = (1..9).toList().shuffled().take(5)
+
+        paresPerguntas = imagensSorteadasUnicas.zip(quantidadesSorteadasUnicas)
+    }
     fun gerarRodada(): RodadaContagem {
         numeroRodadaAtual++
 
-        val imagemSorteada = imagensDisponiveis.random()
-        val quantidade = Random.nextInt(1, 10) // 1 a 9
+        val pergunta = paresPerguntas[numeroRodadaAtual - 1]
+        val quantidade = pergunta.second
         val opcoes = gerarOpcoes(quantidade)
+
+        val imagemSorteada = pergunta.first
 
         rodadaAtual = RodadaContagem(imagemSorteada, quantidade, opcoes, quantidade)
         return rodadaAtual!!

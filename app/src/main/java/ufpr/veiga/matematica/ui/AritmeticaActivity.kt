@@ -21,6 +21,7 @@ class AritmeticaActivity : AppCompatActivity() {
 
         controller = AritmeticaController()
 
+        controller.iniciarJogo()
         carregarQuestao()
         setupClickListeners()
     }

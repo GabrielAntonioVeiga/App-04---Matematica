@@ -22,6 +22,7 @@ class ContagemActivity : AppCompatActivity() {
 
         controller = ContagemController()
 
+        controller.iniciarJogo()
         carregarRodada()
         setupClickListeners()
     }
@@ -53,20 +54,20 @@ class ContagemActivity : AppCompatActivity() {
     private fun exibirImagens(rodada: RodadaContagem) {
         binding.containerImagens.removeAllViews()
 
-        val tamanhoEmDp = 120
+        val tamanhoEmDp = 80
         val tamanhoEmPx = dpParaPx(tamanhoEmDp)
 
         for (i in 0 until rodada.quantidade) {
             val imageView = ImageView(this)
             imageView.setImageResource(rodada.imagemResId)
-            imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
-            imageView.maxWidth = tamanhoEmPx
-            imageView.maxHeight = tamanhoEmPx
+            imageView.scaleType = ImageView.ScaleType.FIT_CENTER
 
-            val params = android.widget.GridLayout.LayoutParams()
-            params.width = tamanhoEmPx
-            params.height = tamanhoEmPx
-            params.setMargins(4, 4, 4, 4)
+            val params = android.widget.GridLayout.LayoutParams().apply {
+                width = tamanhoEmPx
+                height = tamanhoEmPx
+                setMargins(4, 4, 4, 4)
+            }
+
             imageView.layoutParams = params
 
             binding.containerImagens.addView(imageView)
